@@ -8,6 +8,12 @@ const Profile = () => import('views/Profile.vue')
 
 Vue.use(VueRouter)
 
+//解决按下两次相同路由跳转逻辑报错的问题
+const originalPush = VueRouter.prototype.replace
+VueRouter.prototype.replace = function replace(location) {
+  return originalPush.call(this, location).catch(err => err)
+}
+
 const routes = [
   {
     path: '',
