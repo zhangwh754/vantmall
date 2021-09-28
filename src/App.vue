@@ -1,8 +1,21 @@
 <template>
   <div id="app">
-    <h2>测试</h2>
+    <div id="nav">
+      <tab-bar></tab-bar>
+      <router-view></router-view>
+    </div>
   </div>
 </template>
+
+<script>
+import TabBar from 'components/TabBar.vue'
+export default {
+  name: 'app',
+  components: {
+    TabBar,
+  }
+}
+</script>
 
 <style>
   @import url('assets/css/base.css');
