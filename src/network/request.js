@@ -6,12 +6,12 @@ export function request(config) {
     timeout: 5000
   })
   instance.interceptors.request.use(res => {
-    console.log('request拦截器', res);
+    // console.log('request拦截器', res);
     return res
   })
 
   instance.interceptors.response.use(config => {
-    console.log('response拦截器', config.data);
+    // console.log('response拦截器', config.data);
     return config.data
   }, err => {
     console.log(err);

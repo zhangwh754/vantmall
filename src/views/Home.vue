@@ -6,10 +6,26 @@
 </template>
 <script>
 import HomeNavBar from 'components/navbar/HomeNavBar.vue'
+import { getHomeMultidata } from 'network/home.js'
+
 export default {
   name: 'home',
   components: {
     HomeNavBar
+  },
+  data() {
+    return {
+      banners: [],
+      recommends: []
+    }
+  },
+  created() {
+    getHomeMultidata()
+      .then(res => {
+        console.log(res.data);
+        this.banners = res.data.banner.list
+        this.recommends = res.data.recommend.list
+      })
   }
 }
 </script>
