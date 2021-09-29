@@ -5,3 +5,7 @@
 .van-nav-bar__title {
   color: #fff;
 }
+.van-swipe__indicator {
+  width: 9px;
+  height: 9px;
+}

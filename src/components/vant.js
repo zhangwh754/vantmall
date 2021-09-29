@@ -1,6 +1,6 @@
 // 自动按需引入 Vant 组件
-import { Tabbar, TabbarItem, NavBar } from 'vant'
-let vantUIs = [Tabbar, TabbarItem, NavBar]
+import { Tabbar, TabbarItem, NavBar, Swipe, SwipeItem } from 'vant'
+let vantUIs = [Tabbar, TabbarItem, NavBar, Swipe, SwipeItem]
 
 export default {
   install (Vue) {
