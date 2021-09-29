@@ -5,6 +5,7 @@
     <home-recommend :recommendInfo="recommends"></home-recommend>
     <home-feature-view></home-feature-view>
     <home-tab-control :goods="goods" :tab="tab" @loadNewGood="loadNewGood"></home-tab-control>
+    <back-top/>
   </div>
 </template>
 <script>
@@ -15,6 +16,7 @@ import HomeSwipe from 'components/swipe/HomeSwipe.vue'
 import HomeRecommend from 'components/recommend/HomeRecommend.vue'
 import HomeFeatureView from 'components/featureview/HomeFeatureView.vue'
 import HomeTabControl from 'components/tabcontrol/HomeTabControl.vue'
+import BackTop from 'components/backtop/BackTop.vue'
 
 export default {
   name: 'home',
@@ -24,6 +26,7 @@ export default {
     HomeRecommend,
     HomeFeatureView,
     HomeTabControl,
+    BackTop,
   },
   data() {
     return {

@@ -7,6 +7,7 @@
           :finished="finished"
           finished-text="没有更多了"
           @load="onLoad(item['type'])"
+          :immediate-check="isimmediatecheck"
         >
             <div class="goodsList">
               <goods-item v-for="(good, index) in goods[item['type']].list" :key="index" :goodsitem="good" class="goods"></goods-item>
@@ -27,13 +28,14 @@ export default {
     return {
       loading: false,
       finished: false,
+      isimmediatecheck: false
     }
   },
   methods: {
     onLoad(type) {
       console.log(type);
-      this.$emit('loadNewGood', type)
-      this.loading = false;
+      // this.$emit('loadNewGood', type)
+      // this.loading = false;
     }
   },
   props: {
