@@ -1,11 +1,16 @@
 <template>
   <div>
-    <van-nav-bar title="标题"/>
+    <van-nav-bar title="购物街" :fixed="isplaceholder" :placeholder="isplaceholder"/>
   </div>
 </template>
 <script>
 export default {
-  name: 'navbar'
+  name: 'navbar',
+  data() {
+    return {
+      isplaceholder: true
+    }
+  },
 }
 </script>
 <style scoped>

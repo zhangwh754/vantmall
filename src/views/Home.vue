@@ -5,6 +5,25 @@
     <home-recommend :recommendInfo="recommends"></home-recommend>
     <home-feature-view></home-feature-view>
     <h2>首页</h2>
+    <h2>首页</h2>
+    <h2>首页</h2>
+    <h2>首页</h2>
+    <h2>首页</h2>
+    <h2>首页</h2>
+    <h2>首页</h2>
+    <h2>首页</h2>
+    <h2>首页</h2>
+    <h2>首页</h2>
+    <h2>首页</h2>
+    <h2>首页</h2>
+    <h2>首页</h2>
+    <h2>首页</h2>
+    <h2>首页</h2>
+    <h2>首页</h2>
+    <h2>首页</h2>
+    <h2>首页</h2>
+    <h2>首页</h2>
+    <h2>首页</h2>
   </div>
 </template>
 <script>
