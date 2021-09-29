@@ -4,7 +4,7 @@
     <home-swipe :images="banners"></home-swipe>
     <home-recommend :recommendInfo="recommends"></home-recommend>
     <home-feature-view></home-feature-view>
-    <home-tab-control :goods="goods" :tab="tab"></home-tab-control>
+    <home-tab-control :goods="goods" :tab="tab" @loadNewGood="loadNewGood"></home-tab-control>
   </div>
 </template>
 <script>
@@ -61,6 +61,9 @@ export default {
           this.goods[type].list.push(...res.data.list)
           this.goods[type].page += 1
         })
+    },
+    loadNewGood(type) {
+      this.getHomeGoods(type)
     }
   }
 }
