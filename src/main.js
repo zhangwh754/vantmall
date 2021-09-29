@@ -8,8 +8,11 @@ Vue.use(vant)
 
 Vue.config.productionTip = false
 
+import 'assets/css/vant.css'
+
 new Vue({
   router,
   store,
   render: h => h(App)
 }).$mount('#app')
+
