@@ -8,16 +8,21 @@
           finished-text="没有更多了"
           @load="onLoad(item['type'])"
         >
-          <h2 v-for="(good, index) in goods[item['type']].list" :key="index">{{item['type']}}：{{index+1}}、{{good.price}}</h2>
+            <div class="goodsList">
+              <goods-item v-for="(good, index) in goods[item['type']].list" :key="index" :goodsitem="good" class="goods"></goods-item>
+            </div>
         </van-list>
-        <!-- <button @click="btnClick(item['type'])">加载新数据</button> -->
       </van-tab>
     </van-tabs>
   </div>
 </template>
 <script>
+import GoodsItem from 'components/goodsitem/GoodsItem.vue';
 export default {
   name: 'hometabcontrol',
+  components: { 
+    GoodsItem 
+  },
   data() {
     return {
       loading: false,
@@ -48,5 +53,14 @@ export default {
 }
 </script>
 <style scoped>
-  
+  .goodsList {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 5px;
+    justify-content: space-around;
+  }
+
+  .goodsList .goods {
+    width: 48%;
+  }
 </style>
