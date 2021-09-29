@@ -4,26 +4,7 @@
     <home-swipe :images="banners"></home-swipe>
     <home-recommend :recommendInfo="recommends"></home-recommend>
     <home-feature-view></home-feature-view>
-    <h2>首页</h2>
-    <h2>首页</h2>
-    <h2>首页</h2>
-    <h2>首页</h2>
-    <h2>首页</h2>
-    <h2>首页</h2>
-    <h2>首页</h2>
-    <h2>首页</h2>
-    <h2>首页</h2>
-    <h2>首页</h2>
-    <h2>首页</h2>
-    <h2>首页</h2>
-    <h2>首页</h2>
-    <h2>首页</h2>
-    <h2>首页</h2>
-    <h2>首页</h2>
-    <h2>首页</h2>
-    <h2>首页</h2>
-    <h2>首页</h2>
-    <h2>首页</h2>
+    <home-tab-control></home-tab-control>
   </div>
 </template>
 <script>
@@ -33,6 +14,7 @@ import HomeNavBar from 'components/navbar/HomeNavBar.vue'
 import HomeSwipe from 'components/swipe/HomeSwipe.vue'
 import HomeRecommend from 'components/recommend/HomeRecommend.vue'
 import HomeFeatureView from 'components/featureview/HomeFeatureView.vue'
+import HomeTabControl from 'components/tabcontrol/HomeTabControl.vue'
 
 export default {
   name: 'home',
@@ -40,7 +22,8 @@ export default {
     HomeNavBar,
     HomeSwipe,
     HomeRecommend,
-    HomeFeatureView
+    HomeFeatureView,
+    HomeTabControl,
   },
   data() {
     return {
