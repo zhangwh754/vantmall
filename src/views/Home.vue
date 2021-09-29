@@ -4,11 +4,11 @@
     <home-swipe :images="banners"></home-swipe>
     <home-recommend :recommendInfo="recommends"></home-recommend>
     <home-feature-view></home-feature-view>
-    <home-tab-control></home-tab-control>
+    <home-tab-control :goods="goods" :tab="tab"></home-tab-control>
   </div>
 </template>
 <script>
-import { getHomeMultidata } from 'network/home.js'
+import { getHomeMultidata, getHomeGoods } from 'network/home.js'
 
 import HomeNavBar from 'components/navbar/HomeNavBar.vue'
 import HomeSwipe from 'components/swipe/HomeSwipe.vue'
@@ -27,16 +27,41 @@ export default {
   },
   data() {
     return {
+      tab: [{name: '流行', type: 'pop'}, {name: '新款', type: 'new'}, {name: '精选', type: 'sell'}],
       banners: [],
-      recommends: []
+      recommends: [],
+      goods: {
+        pop: {page: 0, list: []},
+        new: {page: 0, list: []},
+        sell: {page: 0, list: []}
+      }
     }
   },
   created() {
-    getHomeMultidata()
-      .then(res => {
-        this.banners = res.data.banner.list
-        this.recommends = res.data.recommend.list
-      })
+    //1、获取轮播图及推荐数据
+    this.getHomeMultidata()
+
+    //2、获取商品数据,载入页面立即请求pop、new、sell第一页的数据
+    this.getHomeGoods('pop')
+    this.getHomeGoods('new')
+    this.getHomeGoods('sell')
+  },
+  methods: {
+    getHomeMultidata() {
+      getHomeMultidata()
+        .then(res => {
+          this.banners = res.data.banner.list
+          this.recommends = res.data.recommend.list
+        })
+    },
+    getHomeGoods(type) {
+      const page = this.goods[type].page + 1
+      getHomeGoods(type, page)
+        .then(res => {
+          this.goods[type].list.push(...res.data.list)
+          this.goods[type].page += 1
+        })
+    }
   }
 }
 </script>
