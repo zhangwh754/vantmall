@@ -1,6 +1,6 @@
 <template>
-  <div class="goodsItem">
-    <img :src="goodsitem.show.img" alt="商品图片" @click="goodClick(goodsitem.iid)">
+  <div class="goodsItem" @click="goodClick(goodsitem.iid)">
+    <img :src="goodsitem.show.img" alt="商品图片">
     <div class="goodsInfo">
       <p>{{goodsitem.title}}</p>
       <span class="price">{{goodsitem.price}}</span>
