@@ -1,6 +1,6 @@
 <template>
   <div class="tabcontrol">
-    <van-tabs sticky offset-top="46px" title-active-color="var(--color-tint)">
+    <van-tabs sticky offset-top="46px" title-active-color="var(--color-tint)" @click="onClick">
       <van-tab v-for="(item, index) in tab" :key="index" :title="item.name">
         <van-list
           v-model="loading"
@@ -10,7 +10,12 @@
           :immediate-check="isimmediatecheck"
         >
             <div class="goodsList">
-              <goods-item v-for="(good, index) in goods[item['type']].list" :key="index" :goodsitem="good" class="goods"></goods-item>
+              <goods-item
+                 v-for="(good, index) in goods[item['type']].list"
+                 :key="index" 
+                 :goodsitem="good" 
+                 class="goods"
+              ></goods-item>
             </div>
         </van-list>
       </van-tab>
@@ -33,9 +38,13 @@ export default {
   },
   methods: {
     onLoad(type) {
+      this.loading = true;
       console.log(type);
-      // this.$emit('loadNewGood', type)
-      // this.loading = false;
+      this.$emit('loadNewGood', type)
+    },
+    onClick() {
+      this.loading = false
+      this.finished = false
     }
   },
   props: {

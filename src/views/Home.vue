@@ -4,7 +4,7 @@
     <home-swipe :images="banners"></home-swipe>
     <home-recommend :recommendInfo="recommends"></home-recommend>
     <home-feature-view></home-feature-view>
-    <home-tab-control :goods="goods" :tab="tab" @loadNewGood="loadNewGood"></home-tab-control>
+    <home-tab-control :goods="goods" :tab="tab" @loadNewGood="loadNewGood" ref="tab"></home-tab-control>
     <back-top/>
   </div>
 </template>
@@ -63,11 +63,16 @@ export default {
         .then(res => {
           this.goods[type].list.push(...res.data.list)
           this.goods[type].page += 1
+          this.$refs.tab.loading = false;
+        })
+        .catch(() => {
+          this.$refs.tab.finished = true;
         })
     },
     loadNewGood(type) {
       this.getHomeGoods(type)
-    }
+    },
+
   }
 }
 </script>
