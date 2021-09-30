@@ -1,6 +1,6 @@
 <template>
   <div class="tabcontrol">
-    <van-tabs sticky offset-top="46px" title-active-color="var(--color-tint)" @click="onClick">
+    <van-tabs sticky offset-top="46px" title-active-color="var(--color-tint)" @click="onClick" v-model="active">
       <van-tab v-for="(item, index) in tab" :key="index" :title="item.name">
         <van-list
           v-model="loading"
@@ -31,6 +31,9 @@ export default {
   },
   data() {
     return {
+      active: 2,
+      scroll: 0,
+      scrollRecord: {},
       loading: false,
       finished: false,
       isimmediatecheck: false
@@ -45,6 +48,11 @@ export default {
     onClick() {
       this.loading = false
       this.finished = false
+    },
+    handleScroll () {
+      //document.documentElement.scrollTop获取当前页面的滚动条纵坐标位置
+      this.scroll  = document.documentElement && document.documentElement.scrollTop
+      // console.log(this.scroll)
     }
   },
   props: {
@@ -58,6 +66,21 @@ export default {
       type: Object,
       default() {
         return {}
+      }
+    }
+  },
+  mounted() {
+    window.addEventListener('scroll', this.handleScroll);
+  },
+  watch: {
+    active (news, old) {
+      this.scrollRecord['tab' + old] = parseInt(this.scroll) // 离开的tab栏滚动的高度
+      if (this.scrollRecord['tab' + news]) {
+        this.$nextTick(() => { // 坑不加他会出现滚动距离不够，限制于上一个tab高度问题
+          window.scrollTo(0, parseInt(this.scrollRecord['tab' + news])) // 进入的tab栏滚动到记录的距离
+        })
+      } else {
+        window.scrollTo(0, 0)
       }
     }
   }
