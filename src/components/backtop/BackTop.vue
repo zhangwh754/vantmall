@@ -8,7 +8,10 @@ export default {
   name: 'backtop',
   methods: {
     backtop() {
-      scrollTo(0, 0)
+      scrollTo({
+        top: 0,
+        behavior: "smooth"
+      })
     }
   }
 }

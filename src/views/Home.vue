@@ -63,16 +63,17 @@ export default {
         .then(res => {
           this.goods[type].list.push(...res.data.list)
           this.goods[type].page += 1
-          this.$refs.tab.loading = false;
+          //在一次商品数据请求完成后设置为加载完成，不再触发
+          this.$refs.tab.loading = false; 
         })
         .catch(() => {
+          //没数据后设置为拉到底
           this.$refs.tab.finished = true;
         })
     },
     loadNewGood(type) {
       this.getHomeGoods(type)
     },
-
   }
 }
 </script>
