@@ -28,6 +28,9 @@ const routes = [
   {
     path: '/detail/:id',
     name: 'detail',
+    meta: {
+      noTabBar: true
+    },
     component: Detail
   },
   {
