@@ -18,16 +18,16 @@ export default {
   },
   methods: {
     homeClick() {
-      this.$router.replace('/home')
+      this.$router.push('/home')
     },
     categoriesClick() {
-      this.$router.replace('/category')
+      this.$router.push('/category')
     },
     cartClick() {
-      this.$router.replace('/cart')
+      this.$router.push('/cart')
     },
     profileClick() {
-      this.$router.replace('/profile')
+      this.$router.push('/profile')
     }
   }
 }
