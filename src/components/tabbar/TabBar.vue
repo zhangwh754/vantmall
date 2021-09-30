@@ -14,7 +14,31 @@ export default {
   data() {
     return {
       active: 0,
+      scroll: 0,
+      scrollRecord: {}
     };
+  },
+  methods: {
+    handleScroll () {
+      //document.documentElement.scrollTop获取当前页面的滚动条纵坐标位置
+      this.scroll  = document.documentElement && document.documentElement.scrollTop
+      // console.log(this.scroll)
+    }
+  },
+  mounted() {
+    window.addEventListener('scroll', this.handleScroll);
+  },
+  watch: {
+    active (news, old) {
+      this.scrollRecord['tab' + old] = parseInt(this.scroll) // 离开的tab栏滚动的高度
+      if (this.scrollRecord['tab' + news]) {
+        this.$nextTick(() => { // 坑不加他会出现滚动距离不够，限制于上一个tab高度问题
+          window.scrollTo(0, parseInt(this.scrollRecord['tab' + news])) // 进入的tab栏滚动到记录的距离
+        })
+      } else {
+        window.scrollTo(0, 0)
+      }
+    }
   }
 }
 </script>
