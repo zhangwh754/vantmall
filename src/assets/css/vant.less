@@ -1,17 +1,18 @@
-@nav-bar-background-color: var(--color-tint);
-@nav-bar-title-text-color: #fff;
-@swipe-indicator-size: 9px;
-
-.van-nav-bar {
-  background-color: @nav-bar-background-color;
+.home-nav-bar .van-nav-bar {
+  background-color: var(--color-tint);
   box-shadow: 0 1px 1px rgba(100, 100, 100, .1);
 }
 
-.van-nav-bar__title {
-  color: @nav-bar-title-text-color;
+.home-nav-bar .van-nav-bar__title {
+  color: #fff;
 }
 
 .van-swipe__indicator {
-  width: @swipe-indicator-size;
-  height: @swipe-indicator-size;
+  width: 9px;
+  height: 9px;
+}
+
+.detail-nav-bar .van-nav-bar {
+  background-color: #fff;
+  box-shadow: 0 1px 1px rgba(100, 100, 100, .1);
 }
