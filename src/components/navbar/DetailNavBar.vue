@@ -34,6 +34,7 @@ export default {
     },
     titleClick(index) {
       this.currentIndex = index
+      this.$emit('titleScroll', index)
     }
   }
 }
