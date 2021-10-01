@@ -8,6 +8,7 @@
     <detailcanshu ref="canshu"/>
     <detailpinglun ref="pinglun"/>
     <detailtuijian ref="tuijian"/>
+    <back-top/>
   </div>
 </template>
 <script>
@@ -21,6 +22,7 @@ import DetailRecInfo from '../detail/childcomponents/detailRecInfo'
 import Detailcanshu from './childcomponents/detailcanshu'
 import Detailpinglun from './childcomponents/detailpinglun'
 import Detailtuijian from './childcomponents/detailtuijian'
+import BackTop from 'components/backtop/BackTop.vue'
 
 export default {
   name: 'detail',
@@ -33,6 +35,7 @@ export default {
     Detailcanshu,
     Detailpinglun,
     Detailtuijian,
+    BackTop,
   },
   data() {
     return {
