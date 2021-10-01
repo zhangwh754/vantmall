@@ -49,10 +49,8 @@ export default {
       this.loading = false
       this.finished = false
     },
-    handleScroll () {
-      //document.documentElement.scrollTop获取当前页面的滚动条纵坐标位置
-      this.scroll  = document.documentElement && document.documentElement.scrollTop
-      // console.log(this.scroll)
+    handleScroll (e) {
+      this.scroll  = e.srcElement.scrollingElement.scrollTop
     }
   },
   props: {
