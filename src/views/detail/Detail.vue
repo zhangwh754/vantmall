@@ -1,16 +1,17 @@
 <template>
   <div>
-    <detail-nav-bar @titleScroll="titleScroll"></detail-nav-bar>
-    <detail-swipe :images="goodswipe"></detail-swipe>
-    <detail-good-info :goods-info="goodsInfo"></detail-good-info>
-    <detail-shop-info :shop-info="shopInfo"></detail-shop-info>
-    <detail-rec-info :detailInfo="detailInfo" @imageLoad="imageLoad"></detail-rec-info>
+    <detail-nav-bar @titleScroll="titleScroll" :scrollIndex="currentIndex"/>
+    <detail-swipe :images="goodswipe"/>
+    <detail-good-info :goods-info="goodsInfo"/>
+    <detail-shop-info :shop-info="shopInfo"/>
+    <detail-rec-info :detailInfo="detailInfo" @imageLoad="imageLoad"/>
     <detailcanshu ref="canshu"/>
     <detailpinglun ref="pinglun"/>
     <detailtuijian ref="tuijian"/>
   </div>
 </template>
 <script>
+import { debounce } from 'common/utils.js'
 import { getGoodsDetial, GoodsInfo, ShopInfo } from 'network/detail.js'
 import DetailNavBar from 'components/navbar/DetailNavBar.vue'
 import DetailSwipe from 'components/swipe/DetailSwipe.vue'
@@ -40,7 +41,8 @@ export default {
       shopInfo: {},
       detailInfo: {},
       indexHeight: [],
-      getContentTopY: null
+      getContentTopY: null,
+      currentIndex: 0
     }
   },
   computed: {
@@ -77,6 +79,24 @@ export default {
         top: this.indexHeight[index],
         behavior: "smooth"
       })
+    },
+    handleScroll(e) {
+      let sHeight = e.srcElement.scrollingElement.scrollTop
+      switch(true) {
+        case sHeight >= this.indexHeight[0] && sHeight < this.indexHeight[1]:
+          this.currentIndex = 0
+          break
+        case sHeight >= this.indexHeight[1] && sHeight < this.indexHeight[2]:
+          this.currentIndex = 1
+          break
+        case sHeight >= this.indexHeight[2] && sHeight < this.indexHeight[3]:
+          this.currentIndex = 2
+          break
+        case sHeight >= this.indexHeight[3]:
+          this.currentIndex = 3
+          break
+      }
+      // console.log(this.currentIndex);
     }
   },
   beforeCreate() {
@@ -84,6 +104,9 @@ export default {
       top: 0
     })
   },
+  mounted() {
+    window.addEventListener('scroll', debounce(this.handleScroll), 50)
+  }
 }
 </script>
 <style scoped>

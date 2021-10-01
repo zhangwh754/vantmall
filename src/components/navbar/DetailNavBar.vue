@@ -28,6 +28,9 @@ export default {
       currentIndex: 0
     }
   },
+  props: {
+    scrollIndex: Number
+  },
   methods: {
     onClickLeft() {
       this.$router.back()
@@ -35,6 +38,11 @@ export default {
     titleClick(index) {
       this.currentIndex = index
       this.$emit('titleScroll', index)
+    }
+  },
+  watch: {
+    scrollIndex(newValue) {
+      this.currentIndex = newValue
     }
   }
 }

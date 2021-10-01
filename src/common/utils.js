@@ -22,3 +22,13 @@ export function formatDate(date, fmt) {
   }
   return fmt
 }
+
+export function debounce(fn, delay = 100) {
+  let timer = null;
+  return (...args)=> {
+      clearTimeout(timer);	//在此触发时，会清除上次的事件。
+      timer = setTimeout(() => {
+          fn.apply(this,args);//fn调用参数
+      },delay);
+  };
+}
