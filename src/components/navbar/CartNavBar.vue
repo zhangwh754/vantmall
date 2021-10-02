@@ -1,7 +1,7 @@
 <template>
   <div class="cart-nav-bar">
     <van-nav-bar fixed placeholder>
-      <template v-slot:title>{{title}}</template>
+      <template v-slot:title>购物车({{title}})</template>
     </van-nav-bar>
   </div>
 </template>
@@ -22,7 +22,5 @@ export default {
 }
 </script>
 <style scoped>
-  .cart-nav-bar {
-    font-weight: 700;
-  }
+
 </style>

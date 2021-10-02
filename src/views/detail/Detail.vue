@@ -112,7 +112,7 @@ export default {
       cartProInfo.price = this.goodsInfo.oldPrice;
       cartProInfo.desc = this.goodsInfo.desc;
       this.$store.dispatch('addCart', cartProInfo)
-      console.log(this.$store.state.cartsInfo);
+      console.log(cartProInfo);
     }
   },
   beforeCreate() {
