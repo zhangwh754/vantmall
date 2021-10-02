@@ -4,6 +4,15 @@
 }
 .home-nav-bar .van-nav-bar__title {
   color: #fff;
+  font-weight: 700;
+}
+.cart-nav-bar .van-nav-bar {
+  background-color: var(--color-tint);
+  box-shadow: 0 1px 1px rgba(100, 100, 100, 0.1);
+}
+.cart-nav-bar .van-nav-bar__title {
+  color: #fff;
+  font-weight: 700;
 }
 .van-swipe__indicator {
   width: 9px;
