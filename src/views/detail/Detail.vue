@@ -8,6 +8,7 @@
     <detailcanshu ref="canshu"/>
     <detailpinglun ref="pinglun"/>
     <detailtuijian ref="tuijian"/>
+    <detail-goods-action @addToCart="addToCart" />
     <back-top/>
   </div>
 </template>
@@ -23,6 +24,7 @@ import Detailcanshu from './childcomponents/detailcanshu'
 import Detailpinglun from './childcomponents/detailpinglun'
 import Detailtuijian from './childcomponents/detailtuijian'
 import BackTop from 'components/backtop/BackTop.vue'
+import DetailGoodsAction from './childcomponents/detailGoodsAction'
 
 export default {
   name: 'detail',
@@ -36,6 +38,7 @@ export default {
     Detailpinglun,
     Detailtuijian,
     BackTop,
+    DetailGoodsAction,
   },
   data() {
     return {
@@ -99,7 +102,17 @@ export default {
           this.currentIndex = 3
           break
       }
-      // console.log(this.currentIndex);
+    },
+    addToCart() {
+      // console.log(this.goodsInfo);
+      const cartProInfo = {}
+      cartProInfo.id = this.goodid;
+      cartProInfo.image = this.goodswipe[0];
+      cartProInfo.title = this.goodsInfo.title;
+      cartProInfo.price = this.goodsInfo.oldPrice;
+      cartProInfo.desc = this.goodsInfo.desc;
+      this.$store.dispatch('addCart', cartProInfo)
+      console.log(this.$store.state.cartsInfo);
     }
   },
   beforeCreate() {
